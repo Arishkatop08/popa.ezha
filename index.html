@@ -33,8 +33,64 @@
   <p>б. ЦЩЕБФ - ВЕСНА. Ключ шифра Цезаря - 20</p>
   <p> ГОЛОСНАЯ - НШХШЫЧКЙ. Ключ шифра Цезаря - 10</p>
     
+<h2>21 января, 2026</h2>
     
+    
+<h1>Пример работы алгоритма RSA</h1>
+    <p>Используем простые числа: <span class="highlight">p = 7</span> и <span class="highlight">q = 13</span>.</p>
 
+    <div class="step">
+      <h2>1. Вычисление n</h2>
+      <p>n = p × q = 7 × 13 = <span class="highlight">91</span></p>
+    </div>
+
+    <div class="step">
+      <h2>2. Вычисление φ(n)</h2>
+      <p>φ(n) = (p − 1)(q − 1) = (7 − 1)(13 − 1) = 6 × 12 = <span class="highlight">72</span></p>
+    </div>
+
+    <div class="step">
+      <h2>3. Выбор открытой экспоненты e</h2>
+      <p>Выбираем <code>e</code> так, чтобы:</p>
+      <ul>
+        <li>1 &lt; e &lt; φ(n) → 1 &lt; e &lt; 72</li>
+        <li>НОД(e, φ(n)) = 1</li>
+      </ul>
+      <p>Попробуем <code>e = 5</code>: НОД(5, 72) = 1 → ✅ подходит!</p>
+      <p>Открытая экспонента: <span class="highlight">e = 5</span></p>
+    </div>
+
+    <div class="step">
+      <h2>4. Вычисление закрытого ключа d</h2>
+      <p>Нужно найти <code>d</code>, такое что: (e × d) mod φ(n) = 1</p>
+      <p>То есть: (5 × d) mod 72 = 1</p>
+      <p>Решение: <span class="highlight">d = 29</span>, потому что 5 × 29 = 145, а 145 mod 72 = 1 ✅</p>
+    </div>
+
+    <div class="step">
+      <h2>5. Ключи</h2>
+      <p>Открытый ключ: <span class="highlight">(n, e) = (91, 5)</span> — для шифрования</p>
+      <p>Закрытый ключ: <span class="highlight">(n, d) = (91, 29)</span> — для расшифровки</p>
+    </div>
+
+    <div class="step">
+      <h2>6. Шифрование сообщения</h2>
+      <p>Пусть исходное сообщение: <code>m = 2</code> (например, «анализ готов»)</p>
+      <p>Условие: m &lt; n → 2 &lt; 91 → ✅</p>
+      <p>Шифротекст: C = m<sup>e</sup> mod n = 2<sup>5</sup> mod 91 = 32 mod 91 = <span class="highlight">32</span></p>
+    </div>
+
+    <div class="step">
+      <h2>7. Расшифровка сообщения</h2>
+      <p>Восстанавливаем: M = C<sup>d</sup> mod n = 32<sup>29</sup> mod 91</p>
+      <p>Вычисление даёт: <span class="highlight">M = 2</span> → исходное сообщение восстановлено! ✅</p>
+    </div>
+
+    <div class="step">
+      <h2>Примечание</h2>
+      <p>В реальных системах числа <code>p</code> и <code>q</code> имеют сотни цифр, чтобы обеспечить криптостойкость.</p>
+    </div>
+  </div>
 
     
      <a target="_blank" href="https://icons8.com/icon/67951/new-year">Новый год</a> иконка от <a target="_blank" href="https://icons8.com">Icons8</a>
